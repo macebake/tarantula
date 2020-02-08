@@ -8,7 +8,7 @@ import networkx as nx
 
 from .exceptions import BadLinkException
 from .utils import *
-from settings import STATIC_PATH
+from settings import STATIC_PATH, MAX_DEPTH
 
 
 def make_sitemap_png(input_url):
@@ -52,7 +52,6 @@ def generate_graph_data(base_url):
     visited_links = {base_url_detail['url']: True}
     initial_internal_links = find_links(base_url, base_url)
     current_depth = 0
-    max_depth = 5
 
     def link_loop(base_link, link_list, current_depth):
         nodes.extend([link['name'] for link in link_list])
@@ -66,7 +65,7 @@ def generate_graph_data(base_url):
             visited_links[link['url']] = True
 
             current_depth += 1
-            if current_depth != max_depth:
+            if current_depth < MAX_DEPTH:
                 link_loop(link, new_link_list, current_depth)
 
     link_loop(base_url_detail, initial_internal_links, current_depth)
