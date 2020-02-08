@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sitemap</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='stylesheets/style.css') }}">
+    <script>
+        function goBack() {
+            window.history.back()
+        }
+    </script>
+</head>
+<body>
+    <button class="back" onclick="goBack()">Back</button><br>
+    <img src="{{ url_for('static', filename=sitemap) }}" alt="Sitemap">
+</body>
+</html>

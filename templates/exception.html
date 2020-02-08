@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='stylesheets/style.css') }}">
+    <script>
+        function goBack() {
+            window.history.back()
+        }
+    </script>
+</head>
+<body>
+    {{ error_message }}
+    <button class="back" onclick="goBack()">Back</button>
+</body>
+</html>
